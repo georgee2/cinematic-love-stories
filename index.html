@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amelia &amp; Julian — A Wedding Film</title>
+  <meta name="description" content="An invitation, in five chapters. Join Amelia &amp; Julian on September 21, 2026 in Tuscany." />
+  <meta property="og:title" content="Amelia &amp; Julian — A Wedding Film" />
+  <meta property="og:description" content="An invitation, in five chapters." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Italiana&family=Inter:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ SCENE 1: OPENING LINE ═══════════════ -->
+  <div class="scene-overlay" id="opening-scene">
+    <p class="font-serif italic text-xl fade-slow" id="opening-text">Every love story begins somewhere.</p>
+    <button class="chapter-number press-btn fade-slow" id="opening-btn" style="opacity:0">Press to begin</button>
+  </div>
+
+  <!-- ═══════════════ SCENE 2: ENVELOPE ═══════════════ -->
+  <div class="scene-overlay hidden" id="envelope-scene">
+    <div class="chapter-number mb-10 fade-slow">An Invitation</div>
+    <button id="envelope-btn" class="envelope-wrapper" aria-label="Open invitation">
+      <img src="assets/envelope.png" alt="Wax-sealed wedding envelope" width="520" height="520" class="envelope-img fade-up" />
+    </button>
+    <p class="font-serif italic text-sm muted fade-slow" id="seal-text">Click to break the seal</p>
+  </div>
+
+  <!-- ═══════════════ SCENE 3: TITLE REVEAL ═══════════════ -->
+  <div class="scene-overlay hidden letterbox" id="title-scene">
+    <div class="chapter-number mb-8 fade-slow" style="animation-delay: 0.2s">A Wedding Film, in Five Chapters</div>
+    <h1 class="font-display title-hero fade-up">
+      Amelia
+      <span class="font-script text-gold title-ampersand fade-slow" style="animation-delay: 1.5s">&amp;</span>
+      Julian
+    </h1>
+    <div class="letter-spread" style="animation-delay: 2.5s">
+      <p class="font-sans text-xs tracking-wide uppercase muted-70">September · Twenty Six · Twenty Twenty Six</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MAIN STORY CONTENT ═══════════════ -->
+  <main class="hidden" id="story-content">
+
+    <!-- Story header -->
+    <section class="scene-section film-grain">
+      <div class="text-center px-6">
+        <div class="chapter-number mb-6 animate-flicker">Now Showing</div>
+        <h1 class="font-display title-hero-main">
+          Amelia
+          <span class="font-script text-gold title-amp-sm">&amp;</span>
+          Julian
+        </h1>
+        <p class="font-serif italic muted tracking-wide text-xs uppercase mt-8">Tuscany · Italy · MMXXVI</p>
+      </div>
+    </section>
+
+    <!-- Chapter 1 -->
+    <section class="chapter-scene vignette film-grain" data-bg="assets/scene-met.jpg">
+      <div class="chapter-bg"><img src="assets/scene-met.jpg" alt="How We Met" loading="lazy" width="1920" height="1080" class="chapter-bg-img" /></div>
+      <div class="chapter-body items-start text-left md-pl">
+        <div class="chapter-inner">
+          <div class="chapter-number mb-4">Chapter One</div>
+          <h2 class="font-display chapter-title">How We Met</h2>
+          <p class="font-script text-gold chapter-subtitle">a rainy tuesday, late october</p>
+          <p class="font-serif italic chapter-text">A spilled coffee, an apology that lasted four hours, and a walk through streets that suddenly felt newly drawn. Neither of us went home that night the same person.</p>
+        </div>
+      </div>
+      <div class="scene-marker chapter-number">Scene · 01</div>
+    </section>
+
+    <div class="scene-break film-grain"><p class="scene-break-text font-serif italic">"And then, the world tilted slightly."</p></div>
+
+    <!-- Chapter 2 -->
+    <section class="chapter-scene vignette film-grain" data-bg="assets/scene-journey.jpg">
+      <div class="chapter-bg"><img src="assets/scene-journey.jpg" alt="The Journey" loading="lazy" width="1920" height="1080" class="chapter-bg-img" /></div>
+      <div class="chapter-body items-end text-right md-pr">
+        <div class="chapter-inner">
+          <div class="chapter-number mb-4">Chapter Two</div>
+          <h2 class="font-display chapter-title">The Journey</h2>
+          <p class="font-script text-gold chapter-subtitle">two passports, one suitcase</p>
+          <p class="font-serif italic chapter-text">Across coastlines and time zones, through arguments about maps and quiet mornings in unfamiliar kitchens. We learned the shape of each other slowly, the way oceans shape stone.</p>
+        </div>
+      </div>
+      <div class="scene-marker chapter-number">Scene · 02</div>
+    </section>
+
+    <div class="scene-break film-grain"><p class="scene-break-text font-serif italic">"Time folded itself in half."</p></div>
+
+    <!-- Chapter 3 -->
+    <section class="chapter-scene vignette film-grain" data-bg="assets/scene-proposal.jpg">
+      <div class="chapter-bg"><img src="assets/scene-proposal.jpg" alt="The Proposal" loading="lazy" width="1920" height="1080" class="chapter-bg-img" /></div>
+      <div class="chapter-body items-start text-left md-pl">
+        <div class="chapter-inner">
+          <div class="chapter-number mb-4">Chapter Three</div>
+          <h2 class="font-display chapter-title">The Proposal</h2>
+          <p class="font-script text-gold chapter-subtitle">a courtyard in lecce</p>
+          <p class="font-serif italic chapter-text">It rained. Of course it rained. A ring box, a question whispered between heartbeats, and a yes that arrived before the words did.</p>
+        </div>
+      </div>
+      <div class="scene-marker chapter-number">Scene · 03</div>
+    </section>
+
+    <div class="scene-break film-grain"><p class="scene-break-text font-serif italic">"The next morning arrived in colour."</p></div>
+
+    <!-- Chapter 4 -->
+    <section class="chapter-scene vignette film-grain" data-bg="assets/scene-celebration.jpg">
+      <div class="chapter-bg"><img src="assets/scene-celebration.jpg" alt="The Celebration" loading="lazy" width="1920" height="1080" class="chapter-bg-img" /></div>
+      <div class="chapter-body items-end text-right md-pr">
+        <div class="chapter-inner">
+          <div class="chapter-number mb-4">Chapter Four</div>
+          <h2 class="font-display chapter-title">The Celebration</h2>
+          <p class="font-script text-gold chapter-subtitle">september the twenty-sixth, twenty twenty-six</p>
+          <p class="font-serif italic chapter-text">Beneath an olive grove in Val d'Orcia, with the people who wrote themselves into our story. A long table, a longer night, and you — we hope — somewhere in the frame.</p>
+        </div>
+      </div>
+      <div class="scene-marker chapter-number">Scene · 04</div>
+    </section>
+
+    <div class="scene-break film-grain"><p class="scene-break-text font-serif italic">"Some scenes you don't write — they write you."</p></div>
+
+    <!-- Chapter 5 -->
+    <section class="chapter-scene vignette film-grain" data-bg="assets/scene-future.jpg">
+      <div class="chapter-bg"><img src="assets/scene-future.jpg" alt="The Future" loading="lazy" width="1920" height="1080" class="chapter-bg-img" /></div>
+      <div class="chapter-body items-center text-center">
+        <div class="chapter-inner">
+          <div class="chapter-number mb-4">Chapter Five</div>
+          <h2 class="font-display chapter-title">The Future</h2>
+          <p class="font-script text-gold chapter-subtitle">to be continued —</p>
+          <p class="font-serif italic chapter-text">Whatever the next reel holds, we'll watch it together. Mornings, mountains, ordinary tuesdays. The credits, we suspect, are very far away.</p>
+        </div>
+      </div>
+      <div class="scene-marker chapter-number">Scene · 05</div>
+    </section>
+
+    <!-- Details strip -->
+    <section class="details-strip film-grain">
+      <div class="details-grid">
+        <div>
+          <div class="chapter-number mb-3">The Date</div>
+          <p class="font-display details-value">26 . 09 . 2026</p>
+          <p class="font-serif italic text-sm muted">Saturday, four in the afternoon</p>
+        </div>
+        <div>
+          <div class="chapter-number mb-3">The Place</div>
+          <p class="font-display details-value">Podere San Vito</p>
+          <p class="font-serif italic text-sm muted">Val d'Orcia, Tuscany</p>
+        </div>
+        <div>
+          <div class="chapter-number mb-3">The Dress</div>
+          <p class="font-display details-value">Black Tie, Optional</p>
+          <p class="font-serif italic text-sm muted">Garden formal — wear what makes you feel like the lead role</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp-section vignette film-grain">
+      <div class="rsvp-card">
+        <div class="chapter-number mb-4">Will you join us?</div>
+        <h2 class="font-display rsvp-title">R.S.V.P.</h2>
+        <p class="font-script text-gold rsvp-subtitle">By the first of August</p>
+
+        <form class="rsvp-form" id="rsvp-form">
+          <div>
+            <label class="chapter-number block mb-2">Your Name</label>
+            <input required class="rsvp-input" placeholder="As it should appear on the place card" />
+          </div>
+          <div>
+            <label class="chapter-number block mb-2">Email</label>
+            <input required type="email" class="rsvp-input" placeholder="you@somewhere.com" />
+          </div>
+          <div>
+            <label class="chapter-number block mb-3">Attendance</label>
+            <div class="rsvp-buttons">
+              <button type="button" class="rsvp-choice" data-value="yes">Joyfully accepts</button>
+              <button type="button" class="rsvp-choice" data-value="no">Regretfully declines</button>
+            </div>
+          </div>
+          <button type="submit" class="rsvp-submit" disabled>Send Response</button>
+        </form>
+
+        <div class="rsvp-thanks hidden" id="rsvp-thanks">
+          <p class="font-serif italic text-xl"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thank You / Fin -->
+    <section class="fin-section vignette film-grain letterbox">
+      <div class="text-center px-6">
+        <div class="chapter-number mb-6 animate-flicker">Fin.</div>
+        <h2 class="font-display fin-title">Thank You</h2>
+        <p class="font-script text-gold fin-initials">— A &amp; J</p>
+        <p class="font-serif italic muted fin-text">For being a chapter in our story. The reel is still rolling, and the best scenes are the ones with you in them.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

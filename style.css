@@ -1,0 +1,474 @@
+/* ═══════════════════════════════════════════════════════════════
+   CINEMATIC LOVE STORIES — Static Wedding Film Invitation
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; background: none; border: none; color: inherit; font: inherit; }
+input, textarea { font: inherit; }
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.13 0.012 60);
+  --foreground: oklch(0.94 0.025 80);
+  --ink: oklch(0.09 0.01 60);
+  --gold: oklch(0.82 0.11 75);
+  --burgundy: oklch(0.4 0.14 25);
+  --border: oklch(0.3 0.02 60 / 60%);
+  --muted-foreground: oklch(0.68 0.03 80);
+  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.1 80), oklch(0.7 0.12 60));
+  --vignette: radial-gradient(ellipse at center, transparent 40%, oklch(0 0 0 / 80%) 100%);
+  --shadow-cinema: 0 40px 80px -20px oklch(0 0 0 / 70%), 0 0 0 1px oklch(0.82 0.11 75 / 10%);
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-display: "Italiana", "Cormorant Garamond", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-script: "Pinyon Script", cursive;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.hidden { display: none !important; }
+
+/* ── Font utilities ── */
+.font-serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+.font-display { font-family: var(--font-display); font-weight: 400; }
+.font-sans { font-family: var(--font-sans); }
+.font-script { font-family: var(--font-script); }
+
+/* ── Text utilities ── */
+.text-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.italic { font-style: italic; }
+.uppercase { text-transform: uppercase; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-xl { font-size: 1.25rem; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.tracking-wide { letter-spacing: 0.3em; }
+.muted { color: var(--muted-foreground); }
+.muted-70 { color: oklch(0.94 0.025 80 / 70%); }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.mt-8 { margin-top: 2rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.block { display: block; }
+
+.chapter-number {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── Animations ── */
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-in-slow { from { opacity: 0; } to { opacity: 1; } }
+@keyframes letter-spread { from { letter-spacing: -0.05em; opacity: 0; } to { letter-spacing: 0.3em; opacity: 1; } }
+@keyframes ken-burns { 0% { transform: scale(1.05) translate(0, 0); } 100% { transform: scale(1.2) translate(-2%, -1%); } }
+@keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.85; } }
+@keyframes envelope-open { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-30vh) scale(0.7); opacity: 0; } }
+
+.fade-up { animation: fade-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.fade-slow { animation: fade-in-slow 2.5s ease-out both; }
+.letter-spread { animation: letter-spread 2.2s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-flicker { animation: flicker 4s ease-in-out infinite; }
+
+/* ── Film grain ── */
+.film-grain { position: relative; }
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 0.75  0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+  z-index: 20;
+}
+
+/* ── Vignette ── */
+.vignette { position: relative; }
+.vignette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--vignette);
+  z-index: 15;
+}
+
+/* ── Letterbox ── */
+.letterbox { position: relative; }
+.letterbox .letter-bar-top,
+.letterbox .letter-bar-bottom { display: none; }
+/* Pseudo-element approach */
+.letterbox::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 6vh;
+  background: #000;
+  z-index: 30;
+}
+.letterbox::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 6vh;
+  background: #000;
+  z-index: 30;
+}
+/* film-grain ::after conflicts with letterbox ::after, handle it */
+.letterbox.film-grain::after {
+  background: #000;
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════
+   SCENE OVERLAYS (Opening, Envelope, Title)
+   ═══════════════════════════════════════ */
+.scene-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.scene-overlay.film-grain::after { z-index: 55; }
+
+.press-btn {
+  margin-top: 4rem;
+  opacity: 0;
+  transition: opacity 1s, color 0.3s;
+}
+.press-btn:hover { color: var(--foreground); }
+
+/* Envelope */
+.envelope-wrapper { position: relative; }
+.envelope-img {
+  width: 80vw;
+  max-width: 520px;
+  height: auto;
+  filter: brightness(1.05) drop-shadow(0 40px 80px rgba(0,0,0,0.8));
+  transition: transform 0.7s;
+}
+.envelope-wrapper:hover .envelope-img { transform: scale(1.02); }
+.envelope-breaking .envelope-img {
+  animation: envelope-open 1.4s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+/* Title hero */
+.title-hero {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1.05;
+  text-align: center;
+}
+.title-ampersand {
+  display: block;
+  font-size: clamp(1.8rem, 5vw, 5rem);
+  margin: 0.75rem 0;
+}
+@media (min-width: 768px) { .title-ampersand { margin: 1.25rem 0; } }
+
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+   ═══════════════════════════════════════ */
+.scene-section {
+  position: relative;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.title-hero-main {
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  line-height: 0.95;
+}
+.title-amp-sm {
+  display: block;
+  font-size: clamp(2rem, 5vw, 6rem);
+  margin: 0.5rem 0;
+}
+
+/* ── Chapter Scenes ── */
+.chapter-scene {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.chapter-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.chapter-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.9) contrast(1.05);
+}
+
+.chapter-scene.visible .chapter-bg-img {
+  animation: ken-burns 18s ease-out both;
+}
+
+.chapter-body {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 14vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .chapter-body { padding-left: 5rem; padding-right: 5rem; }
+  .md-pl { padding-left: 8vw; }
+  .md-pr { padding-right: 8vw; }
+}
+
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+
+.chapter-inner {
+  max-width: 36rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 1.6s ease-out, transform 1.6s ease-out;
+}
+
+.chapter-scene.visible .chapter-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-title {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  line-height: 1.05;
+  margin-bottom: 1.25rem;
+}
+
+.chapter-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  margin-bottom: 1.5rem;
+}
+
+.chapter-text {
+  color: oklch(0.94 0.025 80 / 85%);
+  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  line-height: 1.7;
+  max-width: 28rem;
+}
+
+.scene-marker {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 20;
+  opacity: 0.6;
+}
+
+/* ── Scene Break ── */
+.scene-break {
+  position: relative;
+  height: 55vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.scene-break-text {
+  text-align: center;
+  color: oklch(0.94 0.025 80 / 80%);
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+  padding: 0 2rem;
+  max-width: 48rem;
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 2.2s ease-out, transform 2.2s ease-out;
+}
+
+.scene-break.visible .scene-break-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Details Strip ── */
+.details-strip {
+  background: #000;
+  padding: 6rem 1.5rem;
+}
+
+.details-grid {
+  max-width: 64rem;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .details-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+.details-value {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  margin-bottom: 0.5rem;
+}
+
+/* ── RSVP ── */
+.rsvp-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 6rem 1.5rem;
+}
+
+.rsvp-card {
+  max-width: 36rem;
+  width: 100%;
+  text-align: center;
+}
+
+.rsvp-title {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  margin-bottom: 0.75rem;
+}
+
+.rsvp-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.rsvp-form { display: flex; flex-direction: column; gap: 1.25rem; text-align: left; }
+
+.rsvp-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+  padding: 0.75rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  color: var(--foreground);
+  transition: border-color 0.3s;
+}
+.rsvp-input::placeholder { color: oklch(0.68 0.03 80 / 60%); }
+.rsvp-input:focus { border-color: var(--gold); }
+
+.rsvp-buttons { display: flex; gap: 0.75rem; }
+
+.rsvp-choice {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  transition: all 0.3s;
+}
+
+.rsvp-choice:hover { border-color: oklch(0.94 0.025 80 / 40%); }
+.rsvp-choice.active { border-color: var(--gold); color: var(--gold); background: oklch(0.82 0.11 75 / 5%); }
+
+.rsvp-submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  transition: all 0.5s;
+}
+
+.rsvp-submit:hover:not(:disabled) { background: var(--gold); color: var(--background); }
+.rsvp-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.rsvp-thanks { padding: 2.5rem 0; }
+
+/* ── Fin ── */
+.fin-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.fin-title {
+  font-size: clamp(2.5rem, 8vw, 4.375rem);
+  margin-bottom: 1.5rem;
+}
+
+.fin-initials {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 2.5rem;
+}
+
+.fin-text {
+  max-width: 28rem;
+  margin: 0 auto;
+  color: var(--muted-foreground);
+}
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up, .fade-slow { opacity: 1; transform: none; }
+  .chapter-inner { opacity: 1; transform: none; }
+  .scene-break-text { opacity: 1; transform: none; }
+}
